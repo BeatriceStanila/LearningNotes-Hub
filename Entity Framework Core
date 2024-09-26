@@ -39,3 +39,125 @@ Convergence: So basically, the competitve environment that exists now between do
 
 This will create only a single table (instead of 4), but this single table has a DETAILS column and inside is that details thing for each customer in a JSON document. 
 - we are establishing some sort of HYBRID model: it's a relational database but has a JSON document embedding inside a column in that relational database, and this allows us to mix and match.
+- we won't have any joins.
+- this is possible because 
+1. Ef Core has a rich model and so it knows what's behind this things. So, it knows what's in that document.
+2. Relational databases has first class support for manipulating and looking into and doing things with JSON documents.
+
+'''await using (var context = new CustomersContext())
+  {
+    var adultCustomers = await context.Set<Customer>()
+      .Where(c => c.Details.Region == "Europe")
+      .ToListAsync();
+  }'''
+
+- the c.Details maps to a JSON column in the database, and the Region is a property inside that Json document
+- EF Core here is leveraging a SQL Server function called JSON_VALUE where you give it a Json document [Details] and a path to a property '$Region'
+
+
+This is a query that didn't worked in EF7, but works fine in EF8:
+
+'''await using (var context = new CustomersContext())
+  {
+    var customersWithUkAddresses = await context.Set<Customer>()
+      .Where(c => c.Details.Addresses.Any(a => a.Country =="UK"))
+      .ToListAsync();
+  }'''
+
+- instead looking at a scaler property inside the Region from before, we're now looking at addresses which is an array (JSON array); and because it's a collection we can now compose a link operator (ANY) on top of that thing and effectivley ask the database for all customers where's at least one address in the UK
+- so, we can composing a link operator (Any) on a JSON array that's inside a document that's in a column
+- SQL Query: use another Json promitive of SQL Server called OPENJSON where the path here is a path to an array of JSON not a scaler 
+
+
+## Projection of parts of a collection inside a JSON document
+
+Here we look at the addresses and compose an ANY operator on top of those addreses and we also PROJECT OUT things from outside of those addresses. So, we're composing operators both in the WHERE clause and also in the projection, in the SELECT operator.
+- fetch all customers where is at least one address in the UK and then we're going to project out the first one.
+
+'''await using (var context = new CustomersContext())
+  {
+    var customersWithUkAddresses = await context.Set<Customer>()
+      .AsNoTracking()
+      .Where(c => c.Details.Addresses.Any(a => a.Country =="UK"))
+      .Select(c => new
+      {
+        c.Name,
+        UsAddress = c.Details.Addresses.First(a => a.Country == "UK")
+      })
+      .ToListAsync();
+  }'''
+
+### Collection of a primitive type
+public List<DateTime>? Visits {get; set;}
+
+- DateTime = primitive type (also string, integers), it's like an inter string, it's not a complex entity type with a lots of properties inside
+
+- with EF Core 8, we can just do a list of primitives and EF Core will implicitly map that to a JSON array in the database 
+
+  - it's not only allows us to serialise this (which could have been done already with commas)
+  - it also allows us to query them because EF Core knows what's going on
+
+'''await using (var context = new CustomersContext())
+  {
+    var customersWithNotes = await context.Set<Customer>()
+      .Where(c => c.Visits.Count > 1 )
+      .ToListAsync();
+  }'''
+
+- ask for the customers who have at least one visit, which requires the db to go and parse what's going on inside that array
+
+OPENJSON can be used on
+1. something inside the JSON document
+2. an complex array 
+3. a primitive collection (which means there's only one column in the table that comes out)
+4. a parameter
+
+
+### This query goes even further: get all the customers where there's at leat one visit within a certain range of years
+
+- so, the years will be extracted out of each one of those DAYTIMES in that primitive collection
+- and check whether it's in that range
+- 'from' and 'to' are parameters, there are not literals inside the query; they are outside the query and that means that EF will translate them into parameters
+
+'''await using (var context = new CustomersContext())
+  {
+    var from = 2010;
+    var to = 2019;
+    var customersInRange = await context.Set<Customer>()
+      .Where(c => c.Visits.Any(v => v.Year >= from && v.Year <= to))
+      .ToListAsync();
+  }'''
+
+
+### Here there's actually no JSON the database but JSON is integral to this: Send a primitive collection from the client to the database
+
+- ask for all customers that are part of a list
+- specialDays is a list parameter
+- now we are using OPENJSON over a parameter. If Core took the array from .net and basically serialised it into a string with a JSON array representation; it packed the .net arrat into a JSON array and then it sent that to SQL Server as a string parameter.
+- on the SQL Server side, this string parameter is placed into an OPENJSON which unpacks it back from JSON form into a table
+- once this is unpacked as dates, we can once again use it in normal way
+- now the SQL it's not going to vary if we change the actual dates in the list; only the string parameter (containing the JSON array) it's going to change rather then the SQL
+
+'''await using (var context = new CustomersContext())
+  {
+    var specialDays = new List<DateOnly>
+    {
+      new(2008, 5, 20), new(2014, 11, 21), new(2019, 1, 4)
+      new(2022, 6, 11), new(2013, 2, 2), new(2023, 5, 4)
+    };
+    var customersWhoJoinedOnSpecialDays = await context.Set<Customer>()
+      .Where(c => specialDays.Contains(c.MemberSince))
+      .ToListAsync();
+  }'''
+
+
+### Summary
+EF8 expands on previous versions with common patters for both.
+EF8 Uses:
+1. first-class JSON support in the database
+2. With the rich EF model
+
+To enable powerful patterns:
+- primitive collections
+- collections of entities
+- parametr and inline collections (improved 'contains' queries)
