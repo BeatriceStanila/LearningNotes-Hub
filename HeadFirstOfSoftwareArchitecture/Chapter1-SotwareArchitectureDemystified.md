@@ -30,7 +30,7 @@
 
 **Example:** the product owner insists that we get new features and bug fixes out to our customers as fast as possible (agility).
 
-<br>
+----
 
 2. **Architectural Decisions** - includes important decisions that have **long-term** or significant implications for the system:
     - the kind of database used
@@ -42,7 +42,7 @@
 - the UI shall not communicate directly with the database.
 - the single payment service will be broken appart into separate services, one for each payment type we accept. 
 
-<br>
+----
 
 
 3. **Logical Components** - describes the **building blocks** of the system's functionality and how they interact with each other.
@@ -53,7 +53,7 @@
 - the domain (the "what") is the problem you are trying to solve
 - the system functionality (the "how") is how you are solbing that problem
 
-<br>
+----
 
 4. **Architectural Style** - defines the overall **physical shape and structure** of a software system.
     - Microservices (agility)
@@ -84,7 +84,7 @@ In reality, most decisions you encounter will fall between these two examples, w
 
 <br>
 
-####_Where along the spectrum does your decision fall?_
+#### _Where along the spectrum does your decision fall?_
 
 1. **Is it strategic or tactical?**
 
@@ -111,16 +111,16 @@ Decisions that involve significant trade-offs require much more time and analysi
 
 
 
-####_How can I determine whether a decision is more strategic or tactical?_
+#### _How can I determine whether a decision is more strategic or tactical?_
 
-1. How much thought and planning do you need to put into the decision?
+1. **How much thought and planning do you need to put into the decision?**
 - a couple of minutes/up to an hour -> tactical
 - several days/weeks -> strategical
 
 <br>
 
 
-2. How many people are involved in the decision?
+2. **How many people are involved in the decision?**
 - less people -> tactical
 - more people -> strategical
 
@@ -128,29 +128,29 @@ Decisions that involve significant trade-offs require much more time and analysi
 <br>
 
 
-3. Does your decision involve a long-term vision or a
-short-term action?
+3. **Does your decision involve a long-term vision or a short-term action?**
 
+-----
 
 **ARCHITECTURE examples:**
 - migrating your system to a cloud environmnet
 - replacing your UI framework
 - moving from a relational to a graph database
 
-<br>
+-----
 
 **DESIGN examples:**
 - resolving a merge conflict in Git
 - breaking apart a class file
 - renaming a method or function
 
-<br>
+-----
 
 **MIDDLE:**
 - Breaking apart a single service into separate ones
 
 
-<br>
+----
 
 
 **Significant trade-offs:** these can impact scalability, performance and overall maintainability
