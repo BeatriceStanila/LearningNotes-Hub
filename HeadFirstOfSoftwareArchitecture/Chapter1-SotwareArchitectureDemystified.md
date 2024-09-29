@@ -84,23 +84,26 @@ In reality, most decisions you encounter will fall between these two examples, w
 
 <br>
 
-**_Where along the spectrum does your decision fall?_**
+####_Where along the spectrum does your decision fall?_
 
-1. Is it strategic or tactical?
+1. **Is it strategic or tactical?**
 
 **STRATEGIC DECISIONS** are long-term and influence future actions or decisions. The more strategic the decision, the more it stis toward the architecture side of the spectrum.
 
 **TACTICAL DECISIONS** are short-term and generally stand independent of other actions or decisions. 
 
-<br>
-
-2. How much effort will it take to construct or change?
-
--architectural decisions require more effort to construct or change. 
 
 <br>
 
-3. Does it have significant trade-offs?
+2. **How much effort will it take to construct or change?**
+
+- architectural decisions require more effort to construct or change. 
+
+
+<br>
+
+
+3. **Does it have significant trade-offs?**
 
 **TRADE-OFFS** are the _pros_ and _cons_ you evaluate as you are making a decision.
 
@@ -108,17 +111,23 @@ Decisions that involve significant trade-offs require much more time and analysi
 
 
 
-**_How can I determine whether a decision is more strategic or tactical?_**
+####_How can I determine whether a decision is more strategic or tactical?_
 
 1. How much thought and planning do you need to put into the decision?
 - a couple of minutes/up to an hour -> tactical
 - several days/weeks -> strategical
 
 <br>
+
+
 2. How many people are involved in the decision?
 - less people -> tactical
 - more people -> strategical
+
+
 <br>
+
+
 3. Does your decision involve a long-term vision or a
 short-term action?
 
@@ -140,6 +149,10 @@ short-term action?
 **MIDDLE:**
 - Breaking apart a single service into separate ones
 
+
+<br>
+
+
 **Significant trade-offs:** these can impact scalability, performance and overall maintainability
 - deciding which architectural style to use
 - choosing between REST and messaging
@@ -148,6 +161,10 @@ short-term action?
 - choosing between atomic or distributed transactions (This can impact data integrity and data consistency, but also scalability and performance.)
 - deciding whether or not to break apart a service
 - selecting a user interface framework (it depends)
+
+
+<br>
+
 
 **NOT significant trade-offs:**
 - selecting a user interface framework (it depends)
