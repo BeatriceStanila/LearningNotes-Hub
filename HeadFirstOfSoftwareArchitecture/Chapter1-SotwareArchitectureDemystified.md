@@ -60,6 +60,7 @@
     - Layered architecture (less complex and less costly)
     - Event-driven architecture (high scalability)
 
+---- 
 
 # Desing vs Architecure
 
@@ -84,7 +85,7 @@ In reality, most decisions you encounter will fall between these two examples, w
 
 <br>
 
-#### _Where along the spectrum does your decision fall?_
+### _Where along the spectrum does your decision fall?_
 
 1. **Is it strategic or tactical?**
 
@@ -109,9 +110,8 @@ In reality, most decisions you encounter will fall between these two examples, w
 
 Decisions that involve significant trade-offs require much more time and analysis to make and tend to be more architectural in nature. Decisions that have less-significant trade-offs can be made quicker, with less analysis, and therefore tend to be more on the design side.
 
-
-
-#### _How can I determine whether a decision is more strategic or tactical?_
+---- 
+### _How can I determine whether a decision is more strategic or tactical?_
 
 1. **How much thought and planning do you need to put into the decision?**
 - a couple of minutes/up to an hour -> tactical
