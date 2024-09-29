@@ -1,13 +1,11 @@
 # Basic Concepts
 <p>Software Architecture is less about appearance and more about structure.</p>
 
-<p>There are four dimensions to understand and descrive software architecture:</p>
-<ol>
-    <li>**Architectural Characteristics**</li>
-    <li>**Architectural Decisions**</li>
-    <li>**Logical Components**</li>
-    <li>**Architectural Style** </li>
-</ol>
+There are four dimensions to understand and descrive software architecture:
+1. **Architectural Characteristics** 
+2. **Architectural Decisions**
+3. **Logical Components**
+4. **Architectural Style** 
 
 
 1. **Architectural Characteristics** ("ilities") - describes what aspects of the system the architecture needs to support:
