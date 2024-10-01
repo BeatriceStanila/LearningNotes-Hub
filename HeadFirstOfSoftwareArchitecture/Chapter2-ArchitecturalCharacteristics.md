@@ -44,8 +44,8 @@ characteristics; for example, performance and responsiveness might indicate the 
 
 - architects should pay attention to the application’s internal structure as developers create it, to ensure that sloppy coding and other deficiencies don’t degrade the longevity of the application.
 
-
-## Zoo "-ilities"
+---
+## <span style="color:blue">Zoo "-ilities"</span>
 
 1. **Process architectural characteristics** - where the software development process intersects with software architecture. 
 
