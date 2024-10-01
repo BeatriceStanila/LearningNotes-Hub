@@ -8,6 +8,7 @@ An architect has to structural design software systems, for which there are two 
 
 - Architectural characteristics - the important parts of the construction process of a software system or application, regardless of the problem domain (non-domain).
 
+---
 
 The architectural characteristics can be defined in three parts 🔺:
 
@@ -30,3 +31,28 @@ characteristics; for example, performance and responsiveness might indicate the 
 - synergistic: you often cannot choose one architectural characteristic without considering how it may affect others.
 
 - overabundant: possible architectural characteristics are extraordinarily abundant, and new ones appear all the time; for example, a few years ago there was no such thing as on-demand elasticity via a cloud provider
+
+---
+
+## Explicit vs Implicit
+
+**Explicit** architectural characteristics are specified in the requirements for the application.
+- we must support hundreds of users
+
+**Implicit** architectural characteristics are factors that influence an architect’s decisions but aren’t explicitly called out in the requirements.
+- we need to protect the privacy of users
+
+- architects should pay attention to the application’s internal structure as developers create it, to ensure that sloppy coding and other deficiencies don’t degrade the longevity of the application.
+
+
+## Zoo "-ilities"
+
+1. **Process architectural characteristics** - where the software development process intersects with software architecture. 
+
+
+- _agility_ (_modularity_, _testability_, _deployability_, and others)- facilitates and enables agile software development practices.
+- _modularity_ - the degree to which the software is composed of discrete components; affects how architects partition behaviour and organize loigcal building blocks.
+- _testability_  refers to testing at development time (unit testing) rather than formal quality assurance.
+- _deployability_ - how easy and efficient it is to deploy the software system.
+- _extensibility_ - how easy it is for developers to extend the system. This may encompass architectural structure, engineering practices, internal design, and governance.
+- _decouple-ability (coupling)_ - describes how parts of the system are joined together. Some architectures define how to _decouple_  parts in specific ways to achieve certain benefits;
