@@ -76,6 +76,7 @@
 <br>
 
 **The SPECTRUM between architecture and design**
+<br>
 In reality, most decisions you encounter will fall between these two examples, within a spectrum of architecture and design. Knowing where along the spectrum between architecture and design your decision lies helps determine who should be responsible for ultimately making that decision.
 
 - breaking aparat a service
@@ -89,7 +90,7 @@ In reality, most decisions you encounter will fall between these two examples, w
 
 1. **Is it strategic or tactical?**
 
-**STRATEGIC DECISIONS** are long-term and influence future actions or decisions. The more strategic the decision, the more it stis toward the architecture side of the spectrum.
+**STRATEGIC DECISIONS** are long-term and influence future actions or decisions. The more strategic the decision, the more it sits toward the architecture side of the spectrum.
 
 **TACTICAL DECISIONS** are short-term and generally stand independent of other actions or decisions. 
 
@@ -158,7 +159,7 @@ Decisions that involve significant trade-offs require much more time and analysi
 - choosing between REST and messaging
 - choosing to deploy in the cloud or on premisis
 - using full data or only keys for the me ssage payload
-- choosing between atomic or distributed transactions (This can impact data integrity and data consistency, but also scalability and performance.)
+- choosing between atomic or distributed transactions (this can impact data integrity and data consistency, but also scalability and performance)
 - deciding whether or not to break apart a service
 - selecting a user interface framework (it depends)
 
