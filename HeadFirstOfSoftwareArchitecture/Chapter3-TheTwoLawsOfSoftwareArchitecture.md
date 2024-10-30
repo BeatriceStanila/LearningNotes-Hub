@@ -1,8 +1,9 @@
 # Communicating with downstream services 
 
-- use messaging queues or topics to communicate with downstream services? 
+- use messaging queues or topics to communicate with downstream services
 
 **QUEUES** (point-to-point communication protocol) are a good choice when you need to ensure that a message is processed exactly once. 
+
 - if it helps, think of queues as being like a group text—you pick everyone you want to inform, type your message, and hit “send”. 
 
 _Pros:_
@@ -40,13 +41,13 @@ _Cons:_
 
 - Decisions that have less-significant trade-offs can be made quicker, with less analysis, and therefore tend to be more on the design side.
 
-Using SYNC communications (HTTP) vs ASYNC communications (messaging queues or topics) is a trade-off.
+Using SYNC communications (HTTP)
+	- SYNC pros: consistency, error handling, transactionality
+	- SYNC cons: extensibility, fault tolerance, responsiveness
 
-- SYNC pros: consistency, error handling, transactionality
-- SYNC cons: extensibility, fault tolerance, responsiveness
-
-- ASYNC pros: extensibility, fault tolerance, responsiveness
-- ASYNC cons: consistency, error handling, transactionality
+Using SYNC communications (messaging queues or topics)
+	- ASYNC pros: extensibility, fault tolerance, responsiveness
+	- ASYNC cons: consistency, error handling, transactionality
 
 2. **WHY is more important than HOW**
 
