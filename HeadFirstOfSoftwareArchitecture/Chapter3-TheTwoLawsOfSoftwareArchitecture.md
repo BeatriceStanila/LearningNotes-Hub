@@ -2,28 +2,28 @@
 
 - use messaging queues or topics to communicate with downstream services? 
 
-Queues (point-to-point communication protocol) are a good choice when you need to ensure that a message is processed exactly once. 
+**QUEUES** (point-to-point communication protocol) are a good choice when you need to ensure that a message is processed exactly once. 
 - if it helps, think of queues as being like a group text—you pick everyone you want to inform, type your message, and hit “send”. 
 
-Pros:
+_Pros:_
 - Supports heterogeneous(different) messages for different onsumers
 - Allows independent monitoring and scaling (helps scalability)
 - More secure (improves security)
 
-Cons:
+_Cons:_
 - Higher degree of coupling (hurts extensibility)
 - Trading service must connect to multiple queues
 - Requires additional infrastructure
 
-Topics (publish/subscribe communication protocol) are a good choice when you need to ensure that a message is processed by multiple consumers.
+**TOPICS** (publish/subscribe communication protocol) are a good choice when you need to ensure that a message is processed by multiple consumers.
 - The publisher simply produces and sends a message. If another service downstream wants to hear from the publisher, it can subscribe to the topic to receive messages.
 - Topics are similar to posting a picture on your go-to social networking site. Anyone following you will see that picture, since they’ve “subscribed” to your timeline.
 
-Pros:
+_Pros:_
 - Low coupling (helps extensibility)
 - Trading service only has one place to publish messages
 
-Cons:
+_Cons:_
 - Less secure (hurts security)
 - More difficult to monitor and scale
 - Homogeneous message for all services
@@ -32,9 +32,9 @@ Cons:
 
 # The Two Laws of Software Architecture
 
-1. EVERYTHING IN SOFTWARE ARCHITECTURE IS A TRADE-OFF
+1. **EVERYTHING IN SOFTWARE ARCHITECTURE IS A TRADE-OFF**
 
-- **Trade-offs** are the _pros_ and _cons_ you evaluate as you are making a decision.
+- *Trade-offs* are the _pros_ and _cons_ you evaluate as you are making a decision.
 
 - Decisions that involve significant trade-offs require much more time and analysis to make and tend to be more architectural in nature.
 
@@ -42,13 +42,13 @@ Cons:
 
 Using SYNC communications (HTTP) vs ASYNC communications (messaging queues or topics) is a trade-off.
 
-SYNC pros: consistency, error handling, transactionality
-SYNC cons: extensibility, fault tolerance, responsiveness
+- SYNC pros: consistency, error handling, transactionality
+- SYNC cons: extensibility, fault tolerance, responsiveness
 
-ASYNC pros: extensibility, fault tolerance, responsiveness
-ASYNC cons: consistency, error handling, transactionality
+- ASYNC pros: extensibility, fault tolerance, responsiveness
+- ASYNC cons: consistency, error handling, transactionality
 
-2. WHY is more important than HOW
+2. **WHY is more important than HOW**
 
 - **WHY** is the _problem domain_.
 - **HOW** is the _solution domain_.
@@ -65,30 +65,30 @@ ASYNC cons: consistency, error handling, transactionality
 
 Strcutre of an ADR:
 
-1. Title (001: short description of the decision)
+1. **Title** (001: short description of the decision)
 - should consist of a three-digit numerical prefix and a noun-heavy, succinct description of the decision being made
 
-2. Status (Request for Comments, Proposed, Accepted, Superseded)
+2. **Status** (Request for Comments, Proposed, Accepted, Superseded)
 
-- Request for Comments: the decision is being discussed
-- Proposed: the decision has been made but not yet implemented
-- Accepted: the decision has been made and implemented
-- Superseded: the decision has been replaced by another decision
+- _Request for Comments:_ the decision is being discussed
+- _Proposed:_ the decision has been made but not yet implemented
+- _Accepted:_ the decision has been made and implemented
+- _Superseded:_ the decision has been replaced by another decision
 	- if a decision is superseded, the new decision should reference the old decision
 	
 
-3. Context
+3. **Context**
 - What is the problem you are trying to solve?
 
-4. Decision
+4. **Decision**
 - What is the decision you made?
 
-5. Consequences
+5. **Consequences**
 - What are the trade-offs you made?
 
-6. Governance (optional)
+6. **Governance** (optional)
 - outline how you’ll ensure that your organization doesn’t deviate from the decision — now or in the future.
 
-7. Notes (optional)
+7. **Notes** (optional)
 - the Notes section contains metadata about the ADR itself (e.g., original author, approval date, approved by, superseded by, last modified date, modified by, last modification)
 
