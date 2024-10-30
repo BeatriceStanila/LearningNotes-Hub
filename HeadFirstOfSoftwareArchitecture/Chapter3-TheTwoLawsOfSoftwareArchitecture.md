@@ -42,12 +42,12 @@ _Cons:_
 - Decisions that have less-significant trade-offs can be made quicker, with less analysis, and therefore tend to be more on the design side.
 
 Using SYNC communications (HTTP)
-	- SYNC pros: consistency, error handling, transactionality
-	- SYNC cons: extensibility, fault tolerance, responsiveness
+- SYNC pros: consistency, error handling, transactionality
+- SYNC cons: extensibility, fault tolerance, responsiveness
 
 Using SYNC communications (messaging queues or topics)
-	- ASYNC pros: extensibility, fault tolerance, responsiveness
-	- ASYNC cons: consistency, error handling, transactionality
+- ASYNC pros: extensibility, fault tolerance, responsiveness
+- ASYNC cons: consistency, error handling, transactionality
 
 2. **WHY is more important than HOW**
 
